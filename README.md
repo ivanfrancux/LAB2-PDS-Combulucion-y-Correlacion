@@ -1,1 +1,1 @@
-# LAB2 PDS Comvulucion y Correlacion
+# LAB2 PDS Convulucion y Correlacion
