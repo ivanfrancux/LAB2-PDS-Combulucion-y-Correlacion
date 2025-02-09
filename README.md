@@ -1,11 +1,12 @@
-# LAB2 PDS Convulucion y Correlacion 
+# LAB2 PDS Convulución y Correlación 
+
 ## Introducción  
 El objetivo segunda entrega dell laboratorio es crear un código en Python para analizar y entender conceptos fundamentales del Procesamiento Digital de Señales, tales como la convolución, la correlación y, además, la transformada de Fourier para el análisis en el dominio de la frecuencia.
 
 ## Convolucion 
-La primera parte del laboratorio se base en encontra la convolucion y la represntacion garfica y secuencial de un sistema h(n) y una señal x(n) utilizanod sumatorias y con programando a través de python.
+La primera parte del laboratorio se basa en encontrar la convolución y la representación gráfica y secuencial de un sistema h(n) y una señal x(n) utilizando sumatorias y con programando a través de Python.
 
-para la convolucion utilizamos como sistema el codigo estidiantil de cadsa uno de los 3 integrantes del laboratorio. 
+Para la convolución utilizamos como sistema el código estudiantil de cada uno de los 3 integrantes del laboratorio y  como señal el número de sus cédulas, de esta manera calculamos la convolución. Primero de forma manual usando sumatorias, para esto utilizamos una matriz donde multiplicamos de cada dígito de las columnas por los dígitos de las columnas y luego súmanos todos los valores en diagonal para finalmente hallar el vector de la siguiente manera. 
 
 ## Correlación 
 
