@@ -1,7 +1,7 @@
-# LAB2 PDS Convulución y Correlación 
+# LAB2 PDS Convolución y Correlación 
 
 ## Introducción  
-El objetivo segunda entrega dell laboratorio es crear un código en Python para analizar y entender conceptos fundamentales del Procesamiento Digital de Señales, tales como la convolución, la correlación y, además, la transformada de Fourier para el análisis en el dominio de la frecuencia.
+El objetivo segunda entrega del laboratorio es crear un código en Python para analizar y entender conceptos fundamentales del Procesamiento Digital de Señales, tales como la convolución, la correlación y, además, la transformada de Fourier para el análisis en el dominio de la frecuencia.
 
 ## Convolución 
 La primera parte del laboratorio se basa en encontrar la convolución y la representación gráfica y secuencial de un sistema h(n) y una señal x(n) utilizando sumatorias y con programando a través de Python.
@@ -46,9 +46,8 @@ yonatan_y = np.convolve(yonatan_x, yonatan_h)
 
 
 ## Correlación 
- En la segunda parte del laboratorio, 
- La correlación se da como una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
- se definio en python los parametros el tiempo de muestro y el dominio de la señales discretas; así como también se plantean las señales dadas de la guia.
+ En la segunda parte del laboratorio, se desarrolla con dos señales dadas  discretas la correlación que es una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
+Se definio en python los parametros el tiempo de muestro y el dominio de la señales discretas; así como también se plantean las señales dadas de la guia.
  ```python
 Ts = 1.25e-3  
 n = np.arange(0, 9)  
@@ -57,7 +56,6 @@ x1 = np.cos(2 * np.pi * 100 * n * Ts)
 x2 = np.sin(2 * np.pi * 100 * n * Ts)
 ```
 Se calcula de forma secuencial teniendo en cuenta los parametros anteriores, obtenemos los siguientes valores x1[nTs]
-
 
 ![image](https://github.com/user-attachments/assets/0533666d-699d-4f96-95be-d6a0e7a7a08c)
 
