@@ -46,13 +46,13 @@ yonatan_y = np.convolve(yonatan_x, yonatan_h)
 
 Convpñución realizada por Python para cada uno de los casos 
 Geraldine Bonilla h(n) x X(n)=[5,6,38,45,67,111,83,67,135,70,50,58,40,28]
-![yonatan](Convolucion.ivan.png)
+![yonatan](Conv.py.g.png)
 
 Hugo Alejandro Peréz h(n) x X(n)=[5,6,15,33,25,447,111,78,87,170,102,87,105,85,68,42]
-![yonatan](Convolucion.ivan.png)
+![yonatan](Conv.py.h.png)
 
 Yonatan Ivan Franco h(n) x X(n)=[5,6,25,45,30,62,63,81,66,63,42,25,57,15,25]
-![yonatan](Convolucion.ivan.png)
+![yonatan](Conv.py.y.png)
 
 ## Correlación 
 En la segunda parte del laboratorio, se desarrolla con dos señales dadas  discretas la correlación que es una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
@@ -83,11 +83,7 @@ correlacion = np.correlate(x1, x2, mode='full')
 
 
 
-
-
 ![image](https://github.com/user-attachments/assets/3ad2366e-e8bc-40d3-a6dc-4fc2b5312e5a)
-
-
 
 
 
@@ -99,12 +95,54 @@ Para la tercera parte del laboratorio utilizamos una señal de EEG con la finali
 
 Una vez obtenida la señal el primer paso es cargar la señal, para esto se usa la librería "wfdb" la cual permite manejar las señales biomédicas con en este caso la EEG y se obtiene la frecuencia de muestreo.
 
+```python
 
+import wfdb
+record_name = r"C:\Users\alejo\Desktop\señales\Lab 2\s01_ex01_s02"
+record = wfdb.rdrecord(record_name)
+signal = record.p_signal[:, 0]  # Primera señal (asumiendo una sola)
+fs = record.fs  # Frecuencia de muestreo
+
+```
 Una vez procesada la señal se utilizo  "Numpy" para el calculo de estadisticas descriptivas de la señal, como la media, la mediana y la desviación estandar.
+```python
+
+def estadisticos_descriptivos(signal):
+    return {
+        "Media": np.mean(signal),
+        "Mediana": np.median(signal),
+        "Desviación estándar": np.std(signal),
+        "Mínimo": np.min(signal),
+        "Máximo": np.max(signal)
+    }
+
+descriptive_stats = estadisticos_descriptivos(signal)
+
+```
+Para el calculo de la transformada de Fourier se utilizo "fft(signal)" la cual tranforma la selak del dominio del tiempo al domino de la frecuencia.
+
+```python
+from scipy.fftpack import fft
+N = len(signal)
+frequencies = np.fft.fftfreq(N, 1/fs)
+fft_values = fft(signal)
+```
 
 Para el caculo de densidad espectral de potencia (PDS) utilizamos el método Welch muestra como la energía de la señal se distribuye en diferentes frecuencias. 
 
+```python
+from scipy.signal import welch
+freqs, psd = welch(signal, fs, nperseg=1024)
+
+```
 El siguiente paso fue calcular las estadísticas en el dominio de la frecuencia, como la frecuencia media, la frecuencia media y la desviación estándar den frecuencia
+```python
+
+frecuencia_media = np.sum(freqs * psd) / np.sum(psd)
+frecuencia_mediana = freqs[np.searchsorted(np.cumsum(psd), np.sum(psd) / 2)]
+desviacion_estandar = np.sqrt(np.sum(psd * (freqs - frecuencia_media) ** 2) / np.sum(psd))
+```
+
 
 Finalmente, "Matplotlib"  graficamos:
  1) La señal en el dominio del tiempo
@@ -114,7 +152,8 @@ Finalmente, "Matplotlib"  graficamos:
  3) PSD distribución de la potencia en frecuencia
 
  4) Histograma de la distribución de  frecuencias
-
+    
+![yonatan]()
      
 ### Contact information
 est.nikoll.bonilla@unimilitar.edu.co
