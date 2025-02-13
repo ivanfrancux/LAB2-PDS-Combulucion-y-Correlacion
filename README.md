@@ -8,7 +8,16 @@ La primera parte del laboratorio se basa en encontrar la convolución y la repre
 
 Para la convolución utilizamos como sistema el código estudiantil de cada uno de los 3 integrantes del laboratorio y  como señal el número de sus cédulas, de esta manera calculamos la convolución. Primero de forma manual usando sumatorias, para esto utilizamos una matriz donde multiplicamos de cada dígito de las columnas por los dígitos de las columnas y luego súmanos todos los valores en diagonal para finalmente hallar el vector para cada no de los estudiantes de la siguiente manera:
 
-![geral]()
+Para el caso de Greraldine resultado de esta convulucion seria h(n) x X(n)=
+![geral](Convulucion.geral.png)
+
+
+Hugo resultado de esta convulucion seria h(n) x X(n)=
+![hugo](Convulucion.Hugo.png)
+
+
+Yonatan resultado de esta convulucion seria h(n) x X(n)=
+![yonatan](Convolucion.ivan.png)
 
 el resultado de esta convulucion seria h(n) x X(n)=
 
