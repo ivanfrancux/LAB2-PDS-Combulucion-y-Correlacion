@@ -8,19 +8,23 @@ La primera parte del laboratorio se basa en encontrar la convolución y la repre
 
 Para la convolución utilizamos como sistema el código estudiantil de cada uno de los 3 integrantes del laboratorio y  como señal el número de sus cédulas, de esta manera calculamos la convolución. Primero de forma manual usando sumatorias, para esto utilizamos una matriz donde multiplicamos de cada dígito de las columnas por los dígitos de las columnas y luego súmanos todos los valores en diagonal para finalmente hallar el vector para cada no de los estudiantes de la siguiente manera:
 
-Para el caso de Greraldine resultado de esta convulucion seria h(n) x X(n)=
+Para cada caso:
+
+-Greraldine resultado de esta convulucion seria h(n) x X(n)=[5,6,38,45,67,111,83,67,135,70,50,58,40,28]
 ![geral](Convulucion.geral.png)
 
 
-Hugo resultado de esta convulucion seria h(n) x X(n)=
+-Hugo resultado de esta convulucion seria h(n) x X(n)=[5,6,15,33,25,447,111,78,87,170,102,87,105,85,68,42]
 ![hugo](Convulucion.Hugo.png)
 
 
-Yonatan resultado de esta convulucion seria h(n) x X(n)=
+-Yonatan resultado de esta convulucion seria h(n) x X(n)=[5,6,25,45,30,62,63,81,66,63,42,25,57,15,25]
 ![yonatan](Convolucion.ivan.png)
 
-el resultado de esta convulucion seria h(n) x X(n)=
+Luego de tener estos datos por medio de calculculos hechos a mano procedemos acomparar con los resultudado de la convulucion  con la de los codigos hechos con pyton 
+´´´ python
 
+´´´
 ## Correlación 
 
 ## Transformada de Fourier 
