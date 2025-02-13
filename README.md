@@ -153,8 +153,29 @@ Finalmente, "Matplotlib"  graficamos:
 
  4) Histograma de la distribución de  frecuencias
     
-![yonatan]()
-     
+![graficos](graficos.jpeg)
+
+```python
+fig, axs = plt.subplots(4, 1, figsize=(8, 12))
+
+# Señal en función del tiempo
+time = np.arange(len(signal)) / fs
+axs[0].plot(time, signal, label='Señal en el tiempo')
+
+# Transformada de Fourier
+axs[1].plot(frequencies[:N//2], np.abs(fft_values[:N//2]), label='FFT')
+
+# Densidad espectral de potencia
+axs[2].semilogy(freqs, psd, label='Densidad espectral de potencia')
+
+# Histograma de frecuencias
+axs[3].hist(freqs, bins=30, weights=psd, alpha=0.7, label='Histograma de frecuencias')
+
+fig.tight_layout()
+
+```
+
+
 ### Contact information
 est.nikoll.bonilla@unimilitar.edu.co
 
