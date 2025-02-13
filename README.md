@@ -46,7 +46,20 @@ yonatan_y = np.convolve(yonatan_x, yonatan_h)
 
 
 ## Correlación 
+ La correlación se da como una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
 
+ ```python
+# Definir el parámetro Ts y el rango de n
+Ts = 1.25e-3  
+n = np.arange(0, 9)  
+
+# Definir las señales x1 y x2
+x1 = np.cos(2 * np.pi * 100 * n * Ts)
+x2 = np.sin(2 * np.pi * 100 * n * Ts)
+```
+```python
+correlacion = np.correlate(x1, x2, mode='full')
+```
 ## Transformada de Fourier 
 ###  Señal Electroencefalografica EEG
 Para la tercera parte del laboratorio utilizamos una señal de EEG con la finalidad de analizar esta señal en el domi nio del tiempo y la freciuencia analizando sus estadisticos descriptivos, frecuencia de muestreo y aplicar la transformada de fourier . 
