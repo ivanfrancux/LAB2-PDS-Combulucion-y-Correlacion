@@ -44,10 +44,20 @@ geral_y = np.convolve(geral_x, geral_h)
 yonatan_y = np.convolve(yonatan_x, yonatan_h) 
 ```
 
+Convpñución realizada por Python para cada uno de los casos 
+Geraldine Bonilla h(n) x X(n)=[5,6,38,45,67,111,83,67,135,70,50,58,40,28]
+![yonatan](Convolucion.ivan.png)
+
+Hugo Alejandro Peréz h(n) x X(n)=[5,6,15,33,25,447,111,78,87,170,102,87,105,85,68,42]
+![yonatan](Convolucion.ivan.png)
+
+Yonatan Ivan Franco h(n) x X(n)=[5,6,25,45,30,62,63,81,66,63,42,25,57,15,25]
+![yonatan](Convolucion.ivan.png)
 
 ## Correlación 
- En la segunda parte del laboratorio, se desarrolla con dos señales dadas  discretas la correlación que es una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
+En la segunda parte del laboratorio, se desarrolla con dos señales dadas  discretas la correlación que es una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
 Se definio en python los parametros el tiempo de muestro y el dominio de la señales discretas; así como también se plantean las señales dadas de la guia.
+
  ```python
 Ts = 1.25e-3  
 n = np.arange(0, 9)  
@@ -83,9 +93,29 @@ correlacion = np.correlate(x1, x2, mode='full')
 
 ## Transformada de Fourier 
 ###  Señal Electroencefalografica EEG
-Para la tercera parte del laboratorio utilizamos una señal de EEG con la finalidad de analizar esta señal en el domi nio del tiempo y la freciuencia analizando sus estadisticos descriptivos, frecuencia de muestreo y aplicar la transformada de fourier . 
+Para la tercera parte del laboratorio utilizamos una señal de EEG con la finalidad de analizar esta señal en el dominio del tiempo y la frecuencia analizando sus estadísticos descriptivos, frecuencia de muestreo y aplicar la transformada de Fourier. 
 
-la señal que utilizamos fue descargada de Physionet. esta habla de un 
+
+
+Una vez obtenida la señal el primer paso es cargar la señal, para esto se usa la librería "wfdb" la cual permite manejar las señales biomédicas con en este caso la EEG y se obtiene la frecuencia de muestreo.
+
+
+Una vez procesada la señal se utilizo  "Numpy" para el calculo de estadisticas descriptivas de la señal, como la media, la mediana y la desviación estandar.
+
+Para el caculo de densidad espectral de potencia (PDS) utilizamos el método Welch muestra como la energía de la señal se distribuye en diferentes frecuencias. 
+
+El siguiente paso fue calcular las estadísticas en el dominio de la frecuencia, como la frecuencia media, la frecuencia media y la desviación estándar den frecuencia
+
+Finalmente, "Matplotlib"  graficamos:
+ 1) La señal en el dominio del tiempo
+
+ 2) FFT transformada de Fourier
+
+ 3) PSD distribución de la potencia en frecuencia
+
+ 4) Histograma de la distribución de  frecuencias
+
+     
 ### Contact information
 est.nikoll.bonilla@unimilitar.edu.co
 
