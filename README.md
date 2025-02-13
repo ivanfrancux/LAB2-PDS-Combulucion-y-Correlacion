@@ -89,8 +89,6 @@ correlacion = np.correlate(x1, x2, mode='full')
 ###  Señal Electroencefalografica EEG
 Para la tercera parte del laboratorio utilizamos una señal de EEG con la finalidad de analizar esta señal en el dominio del tiempo y la frecuencia analizando sus estadísticos descriptivos, frecuencia de muestreo y aplicar la transformada de Fourier. 
 
-Esta señal fue descargada de "Auditory evoked potential EEG-Biometric dataset" el cual es un estudio de PhysioNet. El cual estudia señales EEG de 20 voluntarios con diferentes condiciones experimentales con el objetivo de recopilar datos para el desarrollo de un sistema biométrico sobre EEG y a su vez estudia la respuesta del cerebro  a estímulos auditivos y a la comparación entre estados de reposo con ojos abiertos y cerrados
-
 Una vez obtenida la señal el primer paso es cargar la señal, para esto se usa la librería "wfdb" la cual permite manejar las señales biomédicas con en este caso la EEG y se obtiene la frecuencia de muestreo.
 
 ```python
@@ -172,97 +170,6 @@ axs[3].hist(freqs, bins=30, weights=psd, alpha=0.7, label='Histograma de frecuen
 fig.tight_layout()
 
 ```
-
-
-### Contact information
-est.nikoll.bonilla@unimilitar.edu.co
-
-est.hugo.perez@unimilitar.edu.co
-
-est.yonatan.franco@unimilitar.edu.co
-
-Una vez obtenida la señal el primer paso es cargar la señal, para esto se usa la librería "wfdb" la cual permite manejar las señales biomédicas con en este caso la EEG y se obtiene la frecuencia de muestreo.
-
-```python
-
-import wfdb
-record_name = r"C:\Users\alejo\Desktop\señales\Lab 2\s01_ex01_s02"
-record = wfdb.rdrecord(record_name)
-signal = record.p_signal[:, 0]  # Primera señal (asumiendo una sola)
-fs = record.fs  # Frecuencia de muestreo
-
-```
-Una vez procesada la señal se utilizo  "Numpy" para el calculo de estadisticas descriptivas de la señal, como la media, la mediana y la desviación estandar.
-```python
-
-def estadisticos_descriptivos(signal):
-    return {
-        "Media": np.mean(signal),
-        "Mediana": np.median(signal),
-        "Desviación estándar": np.std(signal),
-        "Mínimo": np.min(signal),
-        "Máximo": np.max(signal)
-    }
-
-descriptive_stats = estadisticos_descriptivos(signal)
-
-```
-Para el calculo de la transformada de Fourier se utilizo "fft(signal)" la cual tranforma la selak del dominio del tiempo al domino de la frecuencia.
-
-```python
-from scipy.fftpack import fft
-N = len(signal)
-frequencies = np.fft.fftfreq(N, 1/fs)
-fft_values = fft(signal)
-```
-
-Para el caculo de densidad espectral de potencia (PDS) utilizamos el método Welch muestra como la energía de la señal se distribuye en diferentes frecuencias. 
-
-```python
-from scipy.signal import welch
-freqs, psd = welch(signal, fs, nperseg=1024)
-
-```
-El siguiente paso fue calcular las estadísticas en el dominio de la frecuencia, como la frecuencia media, la frecuencia media y la desviación estándar den frecuencia
-```python
-
-frecuencia_media = np.sum(freqs * psd) / np.sum(psd)
-frecuencia_mediana = freqs[np.searchsorted(np.cumsum(psd), np.sum(psd) / 2)]
-desviacion_estandar = np.sqrt(np.sum(psd * (freqs - frecuencia_media) ** 2) / np.sum(psd))
-```
-
-
-Finalmente, "Matplotlib"  graficamos:
- 1) La señal en el dominio del tiempo
-
- 2) FFT transformada de Fourier
-
- 3) PSD distribución de la potencia en frecuencia
-
- 4) Histograma de la distribución de  frecuencias
-    
-![graficos](graficos.jpeg)
-
-```python
-fig, axs = plt.subplots(4, 1, figsize=(8, 12))
-
-# Señal en función del tiempo
-time = np.arange(len(signal)) / fs
-axs[0].plot(time, signal, label='Señal en el tiempo')
-
-# Transformada de Fourier
-axs[1].plot(frequencies[:N//2], np.abs(fft_values[:N//2]), label='FFT')
-
-# Densidad espectral de potencia
-axs[2].semilogy(freqs, psd, label='Densidad espectral de potencia')
-
-# Histograma de frecuencias
-axs[3].hist(freqs, bins=30, weights=psd, alpha=0.7, label='Histograma de frecuencias')
-
-fig.tight_layout()
-
-```
-
 
 ### Contact information
 est.nikoll.bonilla@unimilitar.edu.co
