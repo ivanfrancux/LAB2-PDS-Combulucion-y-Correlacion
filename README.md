@@ -46,21 +46,42 @@ yonatan_y = np.convolve(yonatan_x, yonatan_h)
 
 
 ## Correlación 
+ En la segunda parte del laboratorio, 
  La correlación se da como una operación entre señales la cual nos indicará cuánto se parece una señal a la otra cuando una de ellas se desplaza en el tiempo. 
-
+ se definio en python los parametros el tiempo de muestro y el dominio de la señales discretas; así como también se plantean las señales dadas de la guia.
  ```python
-# Definir el parámetro Ts y el rango de n
 Ts = 1.25e-3  
 n = np.arange(0, 9)  
 
-# Definir las señales x1 y x2
 x1 = np.cos(2 * np.pi * 100 * n * Ts)
 x2 = np.sin(2 * np.pi * 100 * n * Ts)
 ```
+Se calcula de forma secuencial teniendo en cuenta los parametros anteriores, obtenemos los siguientes valores x1[nTs]
+
+
+![image](https://github.com/user-attachments/assets/0533666d-699d-4f96-95be-d6a0e7a7a08c)
+
+Y para la señal x2[nTs] 
+
+![image](https://github.com/user-attachments/assets/089943fd-4c79-4915-b2c0-0f133172c348)
+
+Se logra la representación gráfica, donde podemos ver señales que depende de n y son señales discretas 
+
+[![image.png](https://i.postimg.cc/4ND1FrvX/image.png)](https://postimg.cc/JGQJsYdF)
+Para determinar la correlación se usa la función de la libreria numpy correlate la cual nos permitirá calcular la correlación de manera sencilla
 ```python
 correlacion = np.correlate(x1, x2, mode='full')
 ```
-[![image.png](https://i.postimg.cc/4ND1FrvX/image.png)](https://postimg.cc/JGQJsYdF)
+
+
+
+
+
+![image](https://github.com/user-attachments/assets/3ad2366e-e8bc-40d3-a6dc-4fc2b5312e5a)
+
+
+
+
 
 ## Transformada de Fourier 
 ###  Señal Electroencefalografica EEG
