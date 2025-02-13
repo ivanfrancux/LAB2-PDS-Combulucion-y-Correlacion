@@ -60,6 +60,8 @@ x2 = np.sin(2 * np.pi * 100 * n * Ts)
 ```python
 correlacion = np.correlate(x1, x2, mode='full')
 ```
+[![image.png](https://i.postimg.cc/4ND1FrvX/image.png)](https://postimg.cc/JGQJsYdF)
+
 ## Transformada de Fourier 
 ###  Señal Electroencefalografica EEG
 Para la tercera parte del laboratorio utilizamos una señal de EEG con la finalidad de analizar esta señal en el domi nio del tiempo y la freciuencia analizando sus estadisticos descriptivos, frecuencia de muestreo y aplicar la transformada de fourier . 
