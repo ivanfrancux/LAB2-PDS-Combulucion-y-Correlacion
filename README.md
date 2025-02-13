@@ -21,10 +21,30 @@ Para cada caso:
 -Yonatan resultado de esta convulucion seria h(n) x X(n)=[5,6,25,45,30,62,63,81,66,63,42,25,57,15,25]
 ![yonatan](Convolucion.ivan.png)
 
-Luego de tener estos datos por medio de calculculos hechos a mano procedemos acomparar con los resultudado de la convulucion  con la de los codigos hechos con pyton 
-´´´ python
+Luego de tener estos datos por medio de calculculos hechos a mano procedemos acomparar con los resultudado de la convulucion  con la de los codigos hechos con pyton. 
 
-´´´
+Para esto se definen los sistemas y señales asignados por el codigo estudiantil y la cedula.
+
+```python
+hugo_h = np.array([5, 6, 0, 0, 7, 2, 6])
+hugo_x = np.array([1, 0, 3, 3, 0, 9, 6, 3, 9, 7])
+
+geral_h = np.array([5, 6, 0, 0, 6, 4, 4])
+geral_x = np.array([1, 0, 3, 4, 3, 9, 7, 1, 3, 7])
+
+yonatan_h = np.array([5, 6, 0, 0, 7, 2, 5])
+yonatan_x = np.array([1, 0, 5, 3, 3, 2, 2, 4, 1, 5])
+```
+
+Una vez los sistemas y la señal definida utilizamos numpy que se encargada de el calculo numerico, arreglos y operacione, de estas operaciones utilizamos np.convolve(x,h) que toma los arreglos x y h y calcula su convulución devolviendo un nuevo arrgelo "y" que representa la salida de un sistema lienal con "h" y como la respuesta impulso cuando recibe "x" como entrada.
+
+```python
+hugo_y = np.convolve(hugo_x, hugo_h)
+geral_y = np.convolve(geral_x, geral_h)
+yonatan_y = np.convolve(yonatan_x, yonatan_h) 
+```
+
+
 ## Correlación 
 
 ## Transformada de Fourier 
